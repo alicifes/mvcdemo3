@@ -11491,35 +11491,32 @@ var _jquery = _interopRequireDefault(require("jquery"));
 
 require("./selectBox.css");
 
+var _Model = _interopRequireDefault(require("../base/Model"));
+
+var _View = _interopRequireDefault(require("../base/View"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var eventBus = (0, _jquery.default)({});
-var m = {
-  data: {},
-  create: function create() {},
-  delete: function _delete() {},
-  update: function update() {},
-  get: function get() {}
-};
-var v = {
-  el: null,
-  selectBoxHtml: "\n         <div class=\"selectBoxContainer\">\n            <ol class=\"nav\">\n                <li class=\"nav1\">111</li>\n                <li class=\"nav2\">222</li>\n            </ol>\n            <ol class=\"navContent\">\n                <li class=\"content1 disSelected\">111111</li>\n                <li class=\"content2 disSelected\">222222</li>\n            </ol>\n        </div>",
-  init: function init(container) {
-    v.el = (0, _jquery.default)(container);
-  },
-  render: function render() {
-    (0, _jquery.default)(v.selectBoxHtml).appendTo(v.el);
-  }
-};
+var m = new _Model.default({
+  update: function update() {}
+});
 var c = {
   init: function init(container) {
-    v.init(container);
-    v.render();
+    this.container = container;
+    c.v = new _View.default({
+      el: container,
+      computedHtml: "\n            <div class=\"selectBoxContainer\">\n                <ol class=\"nav\">\n                    <li class=\"nav1\">111</li>\n                    <li class=\"nav2\">222</li>\n                </ol>\n                <ol class=\"navContent\">\n                    <li class=\"content1 disSelected\">111111</li>\n                    <li class=\"content2 disSelected\">222222</li>\n                </ol>\n            </div>",
+      render: function render() {
+        (0, _jquery.default)(c.v.computedHtml).appendTo(c.v.el);
+      }
+    });
+    c.v.render();
     c.bindMethods();
     (0, _jquery.default)('.nav').children().eq(0).trigger('click'); //设置默认触发trigger事件
   },
   bindMethods: function bindMethods() {
-    v.el.children().on('click', 'li', function (e) {
+    c.v.el.children().on('click', 'li', function (e) {
       //区别current和currentTarget
       var $li = (0, _jquery.default)(e.currentTarget);
       $li.addClass('navSelected').siblings().removeClass('navSelected');
@@ -11530,7 +11527,7 @@ var c = {
 };
 var _default = c;
 exports.default = _default;
-},{"jquery":"../node_modules/jquery/dist/jquery.js","./selectBox.css":"selectBox.css"}],"move.css":[function(require,module,exports) {
+},{"jquery":"../node_modules/jquery/dist/jquery.js","./selectBox.css":"selectBox.css","../base/Model":"../base/Model.js","../base/View":"../base/View.js"}],"move.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -11618,7 +11615,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59981" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62812" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
