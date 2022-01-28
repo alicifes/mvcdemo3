@@ -1,12 +1,14 @@
 import './default.css'
 import './formoat.css'
-import x from './computed.js'
+import init from './computed.js'
 import y from './selectBox.js'
 import './move.js'
 import './round.js'
+import Vue from "vue";
+Vue.config.productionTip = false
 
+init('.computed')
 
-x.init('.computed')
 y.init('.selectBox')
 
 
