@@ -12159,7 +12159,38 @@ var init = function init(container) {
 
 var _default = init;
 exports.default = _default;
-},{"vue":"../node_modules/vue/dist/vue.esm.js"}],"../../../../../.config/yarn/global/node_modules/process/browser.js":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.esm.js"}],"selectBox.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../../.config/yarn/global/node_modules/parcel/src/builtins/css-loader.js"}],"selectBox.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _vue = _interopRequireDefault(require("vue"));
+
+require("./selectBox.css");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initSelectBox = function initSelectBox(container) {
+  new _vue.default({
+    el: container,
+    data: {
+      index: 0
+    },
+    template: "\n        <section class=\"selectBox\">\n            <div class=\"selectBoxContainer\">\n                <ol class=\"nav\" >\n                    <li :class=\"index===0?'navSelected':''\" class=\"nav1\" @click=\"index=0\"><span>111</span></li>\n                    <li :class=\"index===1?'navSelected':''\" class=\"nav2\" @click=\"index=1\">222</li>\n                </ol>\n                <ol class=\"navContent\">\n                    <li :class=\"index===0?'':'disSelected'\" class=\"content1\">111111</li>\n                    <li :class=\"index===1?'':'disSelected'\" class=\"content2\">222222</li>\n                </ol>\n            </div>\n        </section>"
+  });
+};
+
+var _default = initSelectBox;
+exports.default = _default;
+},{"vue":"../node_modules/vue/dist/vue.esm.js","./selectBox.css":"selectBox.css"}],"../../../../../.config/yarn/global/node_modules/process/browser.js":[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
@@ -23254,151 +23285,7 @@ if ( typeof noGlobal === "undefined" ) {
 return jQuery;
 } );
 
-},{"process":"../../../../../.config/yarn/global/node_modules/process/browser.js"}],"selectBox.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../.config/yarn/global/node_modules/parcel/src/builtins/css-loader.js"}],"../base/Model.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-var Model =
-/*#__PURE__*/
-function () {
-  function Model(options) {
-    var _this = this;
-
-    _classCallCheck(this, Model);
-
-    var optionArray = ['data', 'create', 'update', 'delete', 'get'];
-    optionArray.forEach(function (key) {
-      if (key in options) {
-        _this[key] = options[key];
-      }
-    });
-  }
-
-  _createClass(Model, [{
-    key: "create",
-    value: function create() {
-      console.error('初始化未使用');
-    }
-  }, {
-    key: "delete",
-    value: function _delete() {
-      console.error('初始化未使用');
-    }
-  }, {
-    key: "update",
-    value: function update() {
-      console.error('初始化未使用');
-    }
-  }, {
-    key: "get",
-    value: function get() {
-      console.error('初始化未使用');
-    }
-  }]);
-
-  return Model;
-}();
-
-var _default = Model;
-exports.default = _default;
-},{}],"../base/View.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _jquery = _interopRequireDefault(require("jquery"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var View =
-/*#__PURE__*/
-_createClass(function View(_ref) {
-  var el = _ref.el,
-      computedHtml = _ref.computedHtml,
-      render = _ref.render;
-
-  _classCallCheck(this, View);
-
-  this.el = (0, _jquery.default)(el);
-  this.computedHtml = computedHtml;
-  this.render = render;
-});
-
-var _default = View;
-exports.default = _default;
-},{"jquery":"../node_modules/jquery/dist/jquery.js"}],"selectBox.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _jquery = _interopRequireDefault(require("jquery"));
-
-require("./selectBox.css");
-
-var _Model = _interopRequireDefault(require("../base/Model"));
-
-var _View = _interopRequireDefault(require("../base/View"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var eventBus = (0, _jquery.default)({});
-var m = new _Model.default({
-  update: function update() {}
-});
-var c = {
-  init: function init(container) {
-    this.container = container;
-    c.v = new _View.default({
-      el: container,
-      computedHtml: "\n            <div class=\"selectBoxContainer\">\n                <ol class=\"nav\">\n                    <li class=\"nav1\">111</li>\n                    <li class=\"nav2\">222</li>\n                </ol>\n                <ol class=\"navContent\">\n                    <li class=\"content1 disSelected\">111111</li>\n                    <li class=\"content2 disSelected\">222222</li>\n                </ol>\n            </div>",
-      render: function render() {
-        (0, _jquery.default)(c.v.computedHtml).appendTo(c.v.el);
-      }
-    });
-    c.v.render();
-    c.bindMethods();
-    (0, _jquery.default)('.nav').children().eq(0).trigger('click'); //设置默认触发trigger事件
-  },
-  bindMethods: function bindMethods() {
-    c.v.el.children().on('click', 'li', function (e) {
-      //区别current和currentTarget
-      var $li = (0, _jquery.default)(e.currentTarget);
-      $li.addClass('navSelected').siblings().removeClass('navSelected');
-      var index = $li.index();
-      (0, _jquery.default)('.navContent').children().eq(index).removeClass('disSelected').siblings().addClass('disSelected');
-    });
-  }
-};
-var _default = c;
-exports.default = _default;
-},{"jquery":"../node_modules/jquery/dist/jquery.js","./selectBox.css":"selectBox.css","../base/Model":"../base/Model.js","../base/View":"../base/View.js"}],"move.css":[function(require,module,exports) {
+},{"process":"../../../../../.config/yarn/global/node_modules/process/browser.js"}],"move.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -23459,8 +23346,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _vue.default.config.productionTip = false;
 (0, _computed.default)('.computed');
-
-_selectBox.default.init('.selectBox');
+(0, _selectBox.default)('.selectBox');
 },{"./default.css":"default.css","./formoat.css":"formoat.css","./computed.js":"computed.js","./selectBox.js":"selectBox.js","./move.js":"move.js","./round.js":"round.js","vue":"../node_modules/vue/dist/vue.esm.js"}],"../../../../../.config/yarn/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

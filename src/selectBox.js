@@ -1,45 +1,25 @@
-import $ from "jquery";
+import Vue from "vue"
 import './selectBox.css'
-import Model from "../base/Model";
-import View from "../base/View";
 
-const eventBus = $({})
-const m = new Model({
-    update(){}
-})
-
-const c = {
-    init(container) {
-        this.container = container
-         c.v = new View({
-            el:container,
-            computedHtml:`
+const initSelectBox =function (container){
+    new Vue({
+        el:container,
+        data:{
+            index:0
+        },
+        template:`
+        <section class="selectBox">
             <div class="selectBoxContainer">
-                <ol class="nav">
-                    <li class="nav1">111</li>
-                    <li class="nav2">222</li>
+                <ol class="nav" >
+                    <li :class="index===0?'navSelected':''" class="nav1" @click="index=0"><span>111</span></li>
+                    <li :class="index===1?'navSelected':''" class="nav2" @click="index=1">222</li>
                 </ol>
                 <ol class="navContent">
-                    <li class="content1 disSelected">111111</li>
-                    <li class="content2 disSelected">222222</li>
+                    <li :class="index===0?'':'disSelected'" class="content1">111111</li>
+                    <li :class="index===1?'':'disSelected'" class="content2">222222</li>
                 </ol>
-            </div>`,
-            render(){
-                $(c.v.computedHtml).appendTo(c.v.el)
-            }
-        })
-        c.v.render()
-        c.bindMethods()
-        $('.nav').children().eq(0).trigger('click') //设置默认触发trigger事件
-    },
-    bindMethods:()=>{
-        c.v.el.children().on('click','li',(e)=>{
-            //区别current和currentTarget
-            const $li = $(e.currentTarget)
-            $li.addClass('navSelected').siblings().removeClass('navSelected')
-            const index = $li.index()
-            $('.navContent').children().eq(index).removeClass('disSelected').siblings().addClass('disSelected')
-        })
-    }
+            </div>
+        </section>`,
+    })
 }
-export default c
+export default initSelectBox
